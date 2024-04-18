@@ -24,7 +24,7 @@ const DashboardLayout = () => {
       <main className="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-50 min-h-screen transition-all main">
         {/* Topbar */}
         <Topbar toggleSidebar={toggleSidebar} />
-        <div className="p-3 md:p-6">
+        <div className="p-2 md:p-6">
           <Outlet />
         </div>
       </main>
