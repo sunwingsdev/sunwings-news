@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Tiro Bangla", serif;
+}
+
+.react-calendar__tile--now {
+  border: 1px solid black !important;
+}
+
+.react-calendar__tile--now:hover {
+  background-color: orangered !important;
+}
+
+.saturday-tile {
+  color: black !important; /* Example background color for Fridays */
+}
+

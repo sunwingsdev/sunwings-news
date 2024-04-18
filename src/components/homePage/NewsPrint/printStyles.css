@@ -1,0 +1,27 @@
+@media print {
+  body,
+  html {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+  }
+
+  .printable-content {
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 30px 50px !important;
+  }
+  /* Define page breaks for printed content */
+  .printable-content p {
+    page-break-inside: auto; /* Avoid breaking inside paragraphs */
+  }
+}
+.columns-2 {
+  column-count: 2;
+  column-gap: 40px; /* Adjust gap between columns */
+}
