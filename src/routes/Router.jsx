@@ -39,6 +39,8 @@ import FooterGallery from "../pages/homePage/FooterGallery";
 import Support from "../pages/dashboard/support/Support";
 import SetupTutorial from "../pages/dashboard/setupTutorial/SetupTutorial";
 import Documentation from "../pages/dashboard/documentation/Documentation";
+import AdvertisementCollection from "../components/dashboard/media/advertisment/AdvertisementCollection";
+import AllAdvertisements from "../pages/dashboard/media/AllAdvertisements";
 
 const router = createBrowserRouter([
   {
@@ -131,6 +133,10 @@ const router = createBrowserRouter([
       {
         path: "manage-ads",
         element: <ManageAds />,
+      },
+      {
+        path: "advertisement",
+        element: <AllAdvertisements />,
       },
       {
         path: "photo-gallery",

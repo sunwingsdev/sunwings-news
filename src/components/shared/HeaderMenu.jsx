@@ -408,6 +408,7 @@ const HeaderLogo = () => {
             className=" w-1/4 md:w-2/12 flex justify-center items-center"
           >
             <h3
+
               style={{
                 fontSize: `${singleTheme?.newsHeadlineTitleFontSize}px`,
               }}
@@ -420,7 +421,7 @@ const HeaderLogo = () => {
             className=" w-3/4 md:w-10/12 text-sm md:text-lg"
             style={{ backgroundColor: singleTheme?.marqueBg }}
           >
-            <Marquee pauseOnHover={true} speed={110}>
+            <Marquee pauseOnHover={true} speed={60}>
               <Headline />
             </Marquee>
           </div>

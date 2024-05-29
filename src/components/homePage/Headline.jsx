@@ -20,7 +20,7 @@ const Headline = () => {
               className="hover:text-blue-500 hover:cursor-pointer hover:underline mx-10"
               style={{ fontSize: `${singleTheme?.marqueTitleFontSize}px` }}
             >
-              {post?.postTitle} !!!
+              {post?.postTitle}
             </p>
           </Link>
         ))}

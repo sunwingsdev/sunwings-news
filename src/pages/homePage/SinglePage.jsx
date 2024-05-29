@@ -18,6 +18,8 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 const SinglePage = () => {
   const { id } = useParams();
@@ -25,13 +27,22 @@ const SinglePage = () => {
   const { data: bodyThemes } = useGetBodyThemeQuery();
   const singleTheme = bodyThemes?.[0];
   const navigate = useNavigate();
-  if (isLoading) {
-    return <Loader />;
-  }
+
+  const trackingId = import.meta.env.VITE_GA_TRACKING_ID;
+  ReactGA.initialize(trackingId);
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: document.location.pathname,
+      title: singlePost?.postTitle,
+    });
+  }, [singlePost]);
 
   const handlePrintButton = () => {
     navigate(`/print-news/${singlePost?._id}`);
   };
+
+  const currentPageUrl = window.location.href;
 
   const renderContent =
     singlePost?.quill &&
@@ -43,6 +54,11 @@ const SinglePage = () => {
         '<p style="max-width:100%;width:100%;height:auto;display:inline;"'
       );
   const styledRenderContent = `<div style="color: ${singleTheme?.singlePostQuillFontColor}; font-size: ${singleTheme?.singlePostQuillFontSize}px;">${renderContent}</div>`;
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div
       className="flex flex-col md:flex-row m-auto container px-2 gap-4"
@@ -105,24 +121,21 @@ const SinglePage = () => {
                 <FaPrint />
               </div>
             </div>
-
             <div className="flex flex-row items-center gap-2">
               <div>
                 <p className="text-lg text-black">Share To: </p>
               </div>
               <FacebookShareButton
+                // url={currentPageUrl}
+                hashtag={"#sunwings_tours_and_travels"}
                 url={`${import.meta.env.VITE_SITE_URL}/posts/${id}`}
               >
                 <FacebookIcon size={32} round={true} />
               </FacebookShareButton>
-              <TwitterShareButton
-                url={`${import.meta.env.VITE_SITE_URL}/posts/${id}`}
-              >
+              <TwitterShareButton url={currentPageUrl}>
                 <TwitterIcon size={32} round={true} />
               </TwitterShareButton>
-              <LinkedinShareButton
-                url={`${import.meta.env.VITE_SITE_URL}/posts/${id}`}
-              >
+              <LinkedinShareButton url={currentPageUrl}>
                 <LinkedinIcon size={32} round={true} />
               </LinkedinShareButton>
             </div>
