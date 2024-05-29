@@ -69,9 +69,7 @@ const SinglePage = () => {
       </Helmet>
       <div className="md:w-1/6 space-y-4 order-2 md:order-1">
         <CategoryTitle title={"সর্বশেষ সংবাদ"} />
-        <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
-          <SinglePageLeft />
-        </div>
+        <SinglePageLeft />
       </div>
       <div className="md:w-4/6 space-y-2 order-1 md:order-2 my-4">
         <h3
@@ -113,6 +111,11 @@ const SinglePage = () => {
         </div>
 
         <p dangerouslySetInnerHTML={{ __html: styledRenderContent }}></p>
+        {singlePost?.updateAuthor && (
+          <p className="text-base">
+            নিউজটি আপডেট করেছেন : {singlePost?.updateAuthor}
+          </p>
+        )}
         <div className="flex flex-col items-center justify-between w-full">
           <div className="flex flex-row items-center justify-between w-full">
             <div onClick={handlePrintButton} className="inline-block">
@@ -140,12 +143,6 @@ const SinglePage = () => {
               </LinkedinShareButton>
             </div>
           </div>
-
-          {singlePost?.updateAuthor && (
-            <p className="text-xl">
-              নিউজটি আপডেট করেছেন : {singlePost?.updateAuthor}
-            </p>
-          )}
 
           <CommentSection
             newsId={singlePost?._id}

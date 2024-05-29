@@ -408,7 +408,6 @@ const HeaderLogo = () => {
             className=" w-1/4 md:w-2/12 flex justify-center items-center"
           >
             <h3
-
               style={{
                 fontSize: `${singleTheme?.newsHeadlineTitleFontSize}px`,
               }}
