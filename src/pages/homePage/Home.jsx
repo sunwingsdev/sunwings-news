@@ -11,8 +11,9 @@ import Gallery from "../../components/homePage/Gallery";
 import { Helmet } from "react-helmet-async";
 import { useGetPostsQuery } from "../../redux/features/allApis/postApi/postApi";
 import CategorizedNews from "../../components/homePage/CategorizedNews";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VideoNews from "../../components/homePage/VideoNews";
+import ReactGA from "react-ga4";
 
 const Home = () => {
   const [date, setDate] = useState("");
@@ -20,6 +21,17 @@ const Home = () => {
   const { data: nationalNews, isLoading: nationalLoading } = useGetPostsQuery({
     category: "সারাদেশ",
   });
+
+  const trackingId = import.meta.env.VITE_GA_TRACKING_ID;
+  ReactGA.initialize(trackingId);
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: document.location.pathname,
+      title: "Home",
+    });
+  }, []);
+
   const publishedNationalNews = nationalNews?.filter(
     (news) => news.status === "published"
   );

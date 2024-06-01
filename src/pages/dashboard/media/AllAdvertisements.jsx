@@ -9,7 +9,6 @@ const generateAdvertisementSection = (title, ads) => (
     <AdvertisementCollection data={ads} />
   </div>
 );
- 
 const AllAdvertisements = () => {
   const { data } = useGetAllAdvertisementQuery();
 
