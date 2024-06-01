@@ -9,7 +9,6 @@ const generateAdvertisementSection = (title, ads) => (
     <AdvertisementCollection data={ads} />
   </div>
 );
-
 const AllAdvertisements = () => {
   const { data } = useGetAllAdvertisementQuery();
 
@@ -24,6 +23,9 @@ const AllAdvertisements = () => {
   );
   const video_section_top_right_ads = data?.filter(
     (ad) => ad.position === "video_section_top_right"
+  );
+  const video_section_top_left_ads = data?.filter(
+    (ad) => ad.position === "video_section_top_left"
   );
   const video_section_bottom_left_ads = data?.filter(
     (ad) => ad.position === "video_section_bottom_left"
@@ -57,6 +59,10 @@ const AllAdvertisements = () => {
       {generateAdvertisementSection(
         "Video Section Top Right Advertisements",
         video_section_top_right_ads
+      )}
+      {generateAdvertisementSection(
+        "Video Section Top Left Advertisements",
+        video_section_top_left_ads
       )}
       {generateAdvertisementSection(
         "Video Section Bottom Left Advertisements",
