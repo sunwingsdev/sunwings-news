@@ -41,6 +41,12 @@ const SinglePage = () => {
   const handlePrintButton = () => {
     navigate(`/print-news/${singlePost?._id}`);
   };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scrolling behavior
+    });
+  }, []);
 
   const currentPageUrl = window.location.href;
 

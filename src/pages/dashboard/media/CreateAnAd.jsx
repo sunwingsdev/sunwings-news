@@ -131,76 +131,10 @@ const CreateAnAd = () => {
   const onSubmit = async (data) => {
     try {
       if (image) {
-        let requiredWidth, requiredHeight;
-
         // Check if payable amount matches the entered price
         if (parseFloat(data.price) !== parseFloat(payableAmount)) {
           setPriceError("Entered price does not match the Payable amount.");
           setLoading(false);
-          return;
-        }
-
-        // Determine required dimensions based on selected position
-        switch (selectedPosition) {
-          case "beside_top_logo":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "beside_news_slider_top_right_corner":
-            requiredWidth = 250;
-            requiredHeight = 250;
-            break;
-          case "jatio_category_top_left":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "jatio_category_top_right":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "binodon_category_top_left":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "binodon_category_top_right":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "video_section_top_left":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "video_section_top_right":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "video_section_bottom_left":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "video_section_bottom_right":
-            requiredWidth = 240;
-            requiredHeight = 32;
-            break;
-          case "center_home_page":
-            requiredWidth = 1600;
-            requiredHeight = 250;
-            break;
-
-          // Add cases for other positions as needed
-          default:
-            // Default dimensions if position is not specified
-            requiredWidth = 240;
-            requiredHeight = 32;
-        }
-
-        // Check image dimensions
-        const imageWidth = selectedImage.width;
-        const imageHeight = selectedImage.height;
-        if (imageWidth !== requiredWidth || imageHeight !== requiredHeight) {
-          toast.error(
-            `Image dimensions must be ${requiredWidth} x ${requiredHeight} pixels for the selected position.`
-          );
           return;
         }
 
